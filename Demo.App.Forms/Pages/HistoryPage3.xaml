@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Simsip.Demo.Pages.HistoryPage3"
+             Title="History">
+  <StackLayout>
+    
+    <Picker x:Name="accountPicker"
+            HorizontalOptions="Center"/>
+
+    <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="EndAndExpand">
+      
+      <Label Text="Time Period:"
+             FontFamily="HelveticaNeue-Medium"
+             FontSize = "12" 
+             TextColor="Black"
+             VerticalTextAlignment="Center"/>
+
+      <StackLayout Orientation="Horizontal"
+                   HorizontalOptions="EndAndExpand">
+        <Picker x:Name="timePicker"
+                HorizontalOptions="Center"/>
+      </StackLayout>
+      
+    </StackLayout>
+    
+    <ListView x:Name="historyList"
+              HasUnevenRows="True"
+              SeparatorColor="#ddd"
+              ItemsSource="{Binding HistoryList}">
+
+      <ListView.ItemTemplate>
+
+      <DataTemplate>
+
+        <ViewCell>
+
+          <StackLayout BackgroundColor="{Binding Background}"
+                       Padding="10, 5,10, 5"
+				               Spacing = "0">
+            
+            <Label Text="{Binding EntryName}"
+                   FontFamily="HelveticaNeue-Medium"
+                   FontSize="16"
+                   TextColor="#666"/>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand">
+              
+              <Label Text="{Binding EntryDate, StringFormat='{0:d}'}"
+                     FontSize="12"
+                     FontAttributes="Bold"
+                     TextColor="Black"/>
+
+              <StackLayout Orientation="Horizontal"
+                           HorizontalOptions="EndAndExpand">
+                <Label Text="{Binding EntryValue, StringFormat='{0:N}'}"
+                       FontSize="12"
+                       TextColor="Blue"
+                       HorizontalOptions="End"/>
+              </StackLayout>
+              
+            </StackLayout>
+
+          </StackLayout>
+
+        </ViewCell>
+
+      </DataTemplate>
+
+    </ListView.ItemTemplate>
+
+    </ListView>
+  
+  </StackLayout>
+  
+</ContentPage>
